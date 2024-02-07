@@ -1,6 +1,4 @@
 import { knex } from "knex";
-import "dotenv/config";
-import pg from "pg";
 
 import { postgres } from "./Environment";
 
