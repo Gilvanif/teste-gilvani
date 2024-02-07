@@ -21,7 +21,6 @@ export async function clientServiceGet(id: number) {
       .first();
     return result;
   } catch (error) {
-    console.log("🚀 ~ clientServiceGet ~ error:", error);
     return error;
   }
 }

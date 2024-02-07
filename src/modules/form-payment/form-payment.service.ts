@@ -18,7 +18,7 @@ export async function formPaymentServiceGet(id: number) {
   try {
     const result = await Knex(ETableNames.form_payment)
       .select("*")
-      .where("id", id)
+      .where("id", "=", id)
       .first();
     return result;
   } catch (error) {
@@ -30,6 +30,26 @@ export async function formPaymentServiceGetAll() {
   try {
     const result = await Knex(ETableNames.form_payment).select("*");
     return result;
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function formPaymentServiceDelete(id: number) {
+  try {
+    const result = await Knex(ETableNames.form_payment).where("id", id).del();
+    return { id: result };
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function formPaymentServiceUpdate(formPayment: IFormPayment) {
+  try {
+    const result = await Knex(ETableNames.form_payment)
+      .update(formPayment)
+      .where("id", formPayment.id);
+    return { count: result };
   } catch (error) {
     return error;
   }
