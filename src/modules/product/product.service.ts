@@ -13,3 +13,24 @@ export async function productServiceCreate(product: IProduct) {
     return error;
   }
 }
+
+export async function productServiceGet(id: number) {
+  try {
+    const result = await Knex(ETableNames.product)
+      .select("*")
+      .where("id", id)
+      .first();
+    return result;
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function productServiceGetAll() {
+  try {
+    const result = await Knex(ETableNames.product).select("*");
+    return result;
+  } catch (error) {
+    return error;
+  }
+}

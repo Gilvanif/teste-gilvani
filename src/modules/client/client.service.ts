@@ -12,3 +12,45 @@ export async function clientServiceCreate(client: Omit<IClient, "id">) {
     return error;
   }
 }
+
+export async function clientServiceGet(id: number) {
+  try {
+    const result = await Knex(ETableNames.client)
+      .select("*")
+      .where("id", "=", id)
+      .first();
+    return result;
+  } catch (error) {
+    console.log("🚀 ~ clientServiceGet ~ error:", error);
+    return error;
+  }
+}
+
+export async function clientServiceGetAll() {
+  try {
+    const result = await Knex(ETableNames.client).select("*");
+    return result;
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function clientServiceDelete(id: number) {
+  try {
+    const result = await Knex(ETableNames.client).where("id", id).del();
+    return { id: result };
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function clientServiceUpdate(client: IClient) {
+  try {
+    const result = await Knex(ETableNames.client)
+      .update(client)
+      .where("id", client.id);
+    return { count: result };
+  } catch (error) {
+    return error;
+  }
+}

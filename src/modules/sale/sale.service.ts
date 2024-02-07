@@ -11,3 +11,24 @@ export async function saleServiceCreate(sale: ISale) {
     return error;
   }
 }
+
+export async function saleServiceGet(id: number) {
+  try {
+    const result = await Knex(ETableNames.sale)
+      .select("*")
+      .where("id", id)
+      .first();
+    return result;
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function saleServiceGetAll() {
+  try {
+    const result = await Knex(ETableNames.sale).select("*");
+    return result;
+  } catch (error) {
+    return error;
+  }
+}

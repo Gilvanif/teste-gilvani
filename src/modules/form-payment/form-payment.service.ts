@@ -13,3 +13,24 @@ export async function formPaymentServiceCreate(formPayment: IFormPayment) {
     return error;
   }
 }
+
+export async function formPaymentServiceGet(id: number) {
+  try {
+    const result = await Knex(ETableNames.form_payment)
+      .select("*")
+      .where("id", id)
+      .first();
+    return result;
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function formPaymentServiceGetAll() {
+  try {
+    const result = await Knex(ETableNames.form_payment).select("*");
+    return result;
+  } catch (error) {
+    return error;
+  }
+}
