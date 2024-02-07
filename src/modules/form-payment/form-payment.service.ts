@@ -8,13 +8,8 @@ export async function formPaymentServiceCreate(formPayment: IFormPayment) {
       .insert(formPayment)
       .returning("id");
 
-    if (typeof result === "object") {
-      return result.id;
-    } else if (typeof result === "number") {
-      return result;
-    }
+    return result;
   } catch (error) {
-    console.log("🚀 ~ formPaymentServiceCreate ~ error:", error);
     return error;
   }
 }

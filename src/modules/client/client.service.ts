@@ -7,14 +7,8 @@ export async function clientServiceCreate(client: Omit<IClient, "id">) {
     const [result] = await Knex(ETableNames.client)
       .insert(client)
       .returning("id");
-
-    if (typeof result === "object") {
-      return result.id;
-    } else if (typeof result === "number") {
-      return result;
-    }
+    return result;
   } catch (error) {
-    console.log("🚀 ~ clientServiceCreate ~ error:", error);
     return error;
   }
 }

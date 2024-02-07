@@ -8,11 +8,7 @@ export async function productServiceCreate(product: IProduct) {
       .insert(product)
       .returning("id");
 
-    if (typeof result === "object") {
-      return result.id;
-    } else if (typeof result === "number") {
-      return result;
-    }
+    return result;
   } catch (error) {
     return error;
   }
