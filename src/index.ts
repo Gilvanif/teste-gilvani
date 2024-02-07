@@ -4,6 +4,7 @@ import clienteController from "./modules/client/client.controller";
 import formPaymentController from "./modules/form-payment/form-payment.controller";
 import productController from "./modules/product/product.controller";
 import saleController from "./modules/sale/sale.controller";
+import userController from "./modules/user/user.controller";
 
 const app = express();
 app.use(express.json());
@@ -28,5 +29,6 @@ app.use("/client", clienteController);
 app.use("/form-payment", formPaymentController);
 app.use("/product", productController);
 app.use("/sale", saleController);
+app.use("/user", userController);
 
 app.listen(3043, () => console.log("Listening 3043"));

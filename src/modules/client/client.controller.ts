@@ -5,8 +5,11 @@ import auth from "../../middleware/auth";
 const clienteController = Router();
 
 clienteController.post("/", async (req, res) => {
-  const clienteInfo = await clientServiceCreate("req");
-  res.status(200).send(clienteInfo);
+  const result = await clientServiceCreate(req.body);
+  if (result instanceof Error) {
+    res.status(500).send(result);
+  }
+  res.status(200).send(result);
 });
 
 export default clienteController;
