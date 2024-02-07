@@ -1,0 +1,28 @@
+version: "3"
+services:
+    postgres:
+        image: postgres:alpine
+        ports:
+        - '5432:5432'
+        container_name: 'postgres'
+        restart: always
+        volumes:
+        - pg-data:/var/lib/postgresql/data
+        environment:
+            POSTGRES_DB: postgres
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+    teste:
+        container_name: teste
+        build:
+            dockerfile: Dockerfile
+            context: .
+        volumes:
+            - .:/user/src/app
+        env_file:
+            - .env
+        ports:
+            - "3042:3042"
+        restart: always
+volumes:
+  pg-data:

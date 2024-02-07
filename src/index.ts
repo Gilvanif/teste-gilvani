@@ -1,12 +1,12 @@
 import express from "express";
 import cors from "cors";
+import clienteController from "./modules/client/client.controller";
+import formPaymentController from "./modules/form-payment/form-payment.controller";
+import productController from "./modules/product/product.controller";
+import saleController from "./modules/sale/sale.controller";
 
 const app = express();
 app.use(express.json());
-
-interface RequestBody {
-  name: string;
-}
 
 app.use(cors());
 app.use((req, res, next) => {
@@ -22,6 +22,11 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/carinho", require("./routes/carinhoRoute"));
+// const clienteController = require("./modules/client/client.controller");
+
+app.use("/client", clienteController);
+app.use("/form-payment", formPaymentController);
+app.use("/product", productController);
+app.use("/sale", saleController);
 
 app.listen(3042, () => console.log("Listening 3042"));
