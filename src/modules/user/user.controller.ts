@@ -4,7 +4,7 @@ import auth from "../../middleware/auth";
 
 const userController = Router();
 
-userController.post("/", auth, async (req, res) => {
+userController.post("/", async (req, res) => {
   const clienteInfo = await userServiceCreate("req");
   res.status(200).send(clienteInfo);
 });

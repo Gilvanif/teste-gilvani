@@ -37,7 +37,7 @@ export async function clientServiceGetAll() {
 export async function clientServiceDelete(id: number) {
   try {
     const result = await Knex(ETableNames.client).where("id", id).del();
-    return { id: result };
+    return { count: result };
   } catch (error) {
     return error;
   }

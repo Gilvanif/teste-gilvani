@@ -10,7 +10,7 @@ import auth from "../../middleware/auth";
 
 const saleController = Router();
 
-saleController.post("/", auth, async (req, res) => {
+saleController.post("/", async (req, res) => {
   const result = await saleServiceCreate(req.body);
   if (result instanceof Error) {
     res.status(500).send(result);

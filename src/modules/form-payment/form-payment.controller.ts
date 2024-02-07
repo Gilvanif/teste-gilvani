@@ -10,7 +10,7 @@ import auth from "../../middleware/auth";
 
 const formPaymentController = Router();
 
-formPaymentController.post("/", auth, async function (req, res) {
+formPaymentController.post("/", async function (req, res) {
   const result = await formPaymentServiceCreate(req.body);
   if (result instanceof Error) {
     res.status(500).json(result);

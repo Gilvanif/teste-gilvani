@@ -38,7 +38,7 @@ export async function productServiceGetAll() {
 export async function productServiceDelete(id: number) {
   try {
     const result = await Knex(ETableNames.product).where("id", id).del();
-    return { id: result };
+    return { count: result };
   } catch (error) {
     return error;
   }

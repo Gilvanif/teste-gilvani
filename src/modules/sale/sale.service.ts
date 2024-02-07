@@ -36,7 +36,7 @@ export async function saleServiceGetAll() {
 export async function saleServiceDelete(id: number) {
   try {
     const result = await Knex(ETableNames.sale).where("id", id).del();
-    return { id: result };
+    return { count: result };
   } catch (error) {
     return error;
   }

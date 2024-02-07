@@ -10,6 +10,7 @@ export async function formPaymentServiceCreate(formPayment: IFormPayment) {
 
     return result;
   } catch (error) {
+    console.log("🚀 ~ formPaymentServiceCreate ~ error:", error);
     return error;
   }
 }
@@ -38,7 +39,7 @@ export async function formPaymentServiceGetAll() {
 export async function formPaymentServiceDelete(id: number) {
   try {
     const result = await Knex(ETableNames.form_payment).where("id", id).del();
-    return { id: result };
+    return { count: result };
   } catch (error) {
     return error;
   }

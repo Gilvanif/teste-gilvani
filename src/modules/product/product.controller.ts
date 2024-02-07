@@ -10,7 +10,7 @@ import auth from "../../middleware/auth";
 
 const productController = Router();
 
-productController.post("/", auth, async function (req, res) {
+productController.post("/", async function (req, res) {
   const result = await productServiceCreate(req.body);
   if (result instanceof Error) {
     res.status(500).send(result);
